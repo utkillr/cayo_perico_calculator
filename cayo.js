@@ -134,8 +134,6 @@ $(document).ready(function() {
         total_slots -= item_to_slots[expensive_item];
         total_item_to_slots[expensive_item] += 1;
         total += item_to_price[expensive_item];
-
-        console.log("Single " + expensive_item + " took " + item_to_slots[expensive_item] + " slots - " + total_slots + " left");
       }
 
       // Space left for part of single loot
@@ -145,8 +143,6 @@ $(document).ready(function() {
           item_to_count[expensive_item] -= total_slots / item_to_slots[expensive_item];
           total_item_to_slots[expensive_item] += total_slots / item_to_slots[expensive_item];
           total += item_to_price[expensive_item] * (total_slots / item_to_slots[expensive_item]);
-
-          console.log("Part of " + expensive_item + " took " + total_slots / item_to_slots[expensive_item] + " slots - " + 0 + " left");
 
           total_slots = 0;
         // But if it's a picture, it's tricky
@@ -169,14 +165,10 @@ $(document).ready(function() {
           var most_expensive_slots_to_remove = item_to_slots[expensive_item] - total_slots;
           var price_if_picture_taken = allowed_items_avg_price[expensive_item] * item_to_slots[expensive_item] - most_expensive_slots_to_remove * most_expensive_price_we_had;
 
-          console.log("If we take Picture instead of " + most_expensive_slots_to_remove + " slots of " + most_expensive_we_had + ", then we'll lose " + most_expensive_slots_to_remove * most_expensive_price_we_had + ", but gain " + allowed_items_avg_price[expensive_item] * item_to_slots[expensive_item] + ", which makes " + price_if_picture_taken + " total");
-
           var next_expensive_slots_to_take = total_slots > item_to_count[next_expensive_left] * item_to_slots[next_expensive_left] ?
                                              item_to_count[next_expensive_left] * item_to_slots[next_expensive_left] :
                                              total_slots;
           var price_if_picture_not_taken = next_expensive_slots_to_take * next_expensive_price_left;
-
-          console.log("If we take " + next_expensive_slots_to_take + " slots of " + next_expensive_left + " instead of picture, then we'll simply gain ", next_expensive_slots_to_take * next_expensive_price_left + ", which makes " + price_if_picture_not_taken + " total");
 
           if (price_if_picture_taken > price_if_picture_not_taken) {
             // Remove last most expensive part
@@ -214,14 +206,13 @@ $(document).ready(function() {
     $("#gold_take_cnt").val(total_item_to_slots["gold"]);
     $("#gold_take_total").val(total_item_to_slots["gold"] * item_to_price["gold"]);
 
-    safe_epsilon = safe_epsilon / players;
+    safe_epsilon = parseInt(safe_epsilon / players);
 
     total_buyer = parseInt(total * 10 / 100);
     total_pavel = parseInt(total * 2 / 100);
     total = total - total_buyer - total_pavel;
 
     for (var i = 0; i <= 3; i++) {
-      console.log(total + " " + shares[i]);
       var total_i = parseInt(total * shares[i] / 100);
       if (total_i != 0 && is_elite) {
         total_i += is_hard ? 100000 : 50000;
