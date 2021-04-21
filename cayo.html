@@ -1,0 +1,222 @@
+<head>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="cayo.css">
+</head>
+
+<body>
+  <div class="row">
+    <div class="column">
+      <form>
+        <ul>
+          <li>
+            <label class="myblock" for="main">Main objective:</label>
+            <select class="myblock expanded" name="main" id="main">
+              <option value="900000" selected>Sinsimito Tequila</option>
+              <option value="1000000">Ruby Necklace</option>
+              <option value="1100000">Bearer Bonds</option>
+              <option value="1300000">Pink Diamond</option>
+              <option value="1900000">Panther Statue</option>
+            </select>
+          </li>
+
+          <li>
+            <label class="myblock">Money</label>
+            <label class="myblock" for="money_cnt">all:</label>
+            <label class="myblock" for="money_lock_cnt">all locked:</label>
+            <label class="myblock" for="money_in_cnt">inside:</label>
+            <label class="myblock" for="money_in_lock_cnt">inside locked:</label>
+            <label class="myblock" for="money_mult">X:</label>
+          </li>
+          <li class="myli">
+            <label class="myblock"></label>
+            <input class="myblock" type="number" id="money_cnt" name="money_cnt" min="0" max="30" value="0">
+            <input class="myblock" type="number" id="money_lock_cnt" name="money_lock_cnt" min="0" max="30" value="0">
+            <input class="myblock" type="number" id="money_in_cnt" name="money_in_cnt" min="0" max="30" value="0">
+            <input class="myblock" type="number" id="money_in_lock_cnt" name="money_in_lock_cnt" min="0" max="30" value="0">
+            <input class="myblock" type="number" id="money_mult" name="money_mult" min="1" max="3" value="1">
+          </li>
+
+          <li>
+            <label class="myblock">Weed</label>
+            <label class="myblock" for="weed_cnt">all:</label>
+            <label class="myblock" for="weed_lock_cnt">all locked:</label>
+            <label class="myblock"></label>
+            <label class="myblock"></label>
+            <label class="myblock" for="weed_mult">X:</label>
+          </li>
+          <li class="myli">
+            <label class="myblock"></label>
+            <input class="myblock" type="number" id="weed_cnt" name="weed_cnt" min="0" max="30" value="0">
+            <input class="myblock" type="number" id="weed_lock_cnt" name="weed_lock_cnt" min="0" max="30" value="0">
+            <label class="myblock"></label>
+            <label class="myblock"></label>
+            <input class="myblock" type="number" id="weed_mult" name="weed_mult" min="1" max="3" value="1">
+          </li>
+
+          <li>
+            <label class="myblock">Coke</label>
+            <label class="myblock" for="coke_cnt">all:</label>
+            <label class="myblock" for="coke_lock_cnt">all locked:</label>
+            <label class="myblock"></label>
+            <label class="myblock"></label>
+            <label class="myblock" for="coke_mult">X:</label>
+          </li>
+          <li class="myli">
+            <label class="myblock"></label>
+            <input class="myblock" type="number" id="coke_cnt" name="coke_cnt" min="0" max="30" value="0">
+            <input class="myblock" type="number" id="coke_lock_cnt" name="coke_lock_cnt" min="0" max="30" value="0">
+            <label class="myblock"></label>
+            <label class="myblock"></label>
+            <input class="myblock" type="number" id="coke_mult" name="coke_mult" min="1" max="3" value="1">
+          </li>
+
+          <li>
+            <label class="myblock">Pictures</label>
+            <label class="myblock"></label>
+            <label class="myblock"></label>
+            <label class="myblock" for="picture_cnt">inside:</label>
+            <label class="myblock" for="picture_lock_cnt">inside locked:</label>
+            <label class="myblock" for="picture_mult">X:</label>
+          </li>
+          <li class="myli">
+            <label class="myblock"></label>
+            <label class="myblock"></label>
+            <label class="myblock"></label>
+            <input class="myblock" type="number" id="picture_cnt" name="picture_cnt" min="0" max="30" value="0">
+            <input class="myblock" type="number" id="picture_lock_cnt" name="picture_lock_cnt" min="0" max="30" value="0">
+            <input class="myblock" type="number" id="picture_mult" name="picture_mult" min="1" max="3" value="1">
+          </li>
+
+          <li>
+            <label class="myblock">Gold</label>
+            <label class="myblock"></label>
+            <label class="myblock"></label>
+            <label class="myblock" for="gold_cnt">inside:</label>
+            <label class="myblock" for="gold_lock_cnt">inside locked:</label>
+            <label class="myblock" for="gold_mult">X:</label>
+          </li>
+          <li class="myli">
+            <label class="myblock"></label>
+            <label class="myblock"></label>
+            <label class="myblock"></label>
+            <input class="myblock" type="number" id="gold_cnt" name="gold_cnt" min="0" max="30" value="0">
+            <input class="myblock" type="number" id="gold_lock_cnt" name="gold_lock_cnt" min="0" max="30" value="0">
+            <input class="myblock" type="number" id="gold_mult" name="gold_mult" min="1" max="3" value="1">
+          </li>
+
+          <li>
+            <label class="myblock">Players</label>
+            <label class="myblock"></label>
+            <label class="myblock" for="percent_1">Share 1 (%):</label>
+            <label class="myblock" for="percent_2">Share 2 (%):</label>
+            <label class="myblock" for="percent_3">Share 3 (%):</label>
+            <label class="myblock" for="percent_4">Share 4 (%):</label>
+          </li>
+          <li class="myli">
+            <label class="myblock"></label>
+            <label class="myblock"></label>
+            <input class="myblock" type="number" id="percent_1" name="percent_1" min="0" max="100" value="0">
+            <input class="myblock" type="number" id="percent_2" name="percent_1" min="0" max="100" value="0">
+            <input class="myblock" type="number" id="percent_3" name="percent_1" min="0" max="100" value="0">
+            <input class="myblock" type="number" id="percent_4" name="percent_1" min="0" max="100" value="0">
+          </li>
+
+          <li>
+            <label class="myblock">Settings</label>
+            <label class="myblock" for="hard">Hard mode:</label>
+            <label class="myblock" for="hard">Elite:</label>
+          </li>
+          <li class="myli">
+            <label class="myblock"></label>
+            <input class="myblock" type="checkbox" name="hard" id="hard" value="1">
+            <input class="myblock" type="checkbox" name="elite" id="elite" value="1">
+          </li>
+        </ul>
+        <button id="count" type="button">Count</button>
+      </form>
+    </div>
+
+    <div class="column">  
+      <form>
+        <ul>
+          <li>
+            <label for="total">Total take:</label>
+            <input type="text" id="total" name="total" disabled>
+          </li>
+
+          <li>
+            <label for="money_take_cnt">Money count:</label>
+            <input type="text" id="money_take_cnt" name="money_take_cnt" disabled>
+          </li>
+          <li>
+            <label for="money_take_total">Money total:</label>
+            <input type="text" id="money_take_total" name="money_take_total" disabled>
+          </li>
+
+          <li>
+            <label for="weed_take_cnt">Weed count:</label>
+            <input type="text" id="weed_take_cnt" name="weed_take_cnt" disabled>
+          </li>
+          <li>
+            <label for="weed_take_total">Weed total:</label>
+            <input type="text" id="weed_take_total" name="weed_take_total" disabled>
+          </li>
+
+          <li>
+            <label for="coke_take_cnt">Coke count:</label>
+            <input type="text" id="coke_take_cnt" name="coke_take_cnt" disabled>
+          </li>
+          <li>
+            <label for="coke_take_total">Coke total:</label>
+            <input type="text" id="coke_take_total" name="coke_take_total" disabled>
+          </li>
+
+          <li>
+            <label for="picture_take_cnt">Pictures count:</label>
+            <input type="text" id="picture_take_cnt" name="picture_take_cnt" disabled>
+          </li>
+          <li>
+            <label for="picture_take_total">Picture total:</label>
+            <input type="text" id="picture_take_total" name="picture_take_total" disabled>
+          </li>
+
+          <li>
+            <label for="gold_take_cnt">Gold count:</label>
+            <input type="text" id="gold_take_cnt" name="gold_take_cnt" disabled>
+          </li>
+          <li>
+            <label for="gold_take_total">Gold total:</label>
+            <input type="text" id="gold_take_total" name="gold_take_total" disabled>
+          </li>
+
+          <li>
+            <label for="total_1">Total player 1:</label>
+            <input type="text" id="total_1" name="total_1" disabled>
+          </li>
+          <li>
+            <label for="total_2">Total player 2:</label>
+            <input type="text" id="total_2" name="total_2" disabled>
+          </li>
+          <li>
+            <label for="total_3">Total player 3:</label>
+            <input type="text" id="total_3" name="total_3" disabled>
+          </li>
+          <li>
+            <label for="total_4">Total player 4:</label>
+            <input type="text" id="total_4" name="total_4" disabled>
+          </li>
+          <li>
+            <label for="total_buyer">Total buyer:</label>
+            <input type="text" id="total_buyer" name="total_buyer" disabled>
+          </li>
+          <li>
+            <label for="total_pavel">Total Pavel:</label>
+            <input type="text" id="total_pavel" name="total_pavel" disabled>
+          </li>
+        </ul>
+      </form>
+    </div>
+  </div>
+
+  <script src="cayo.js"></script>
+</body>

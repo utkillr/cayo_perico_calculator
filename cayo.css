@@ -1,0 +1,98 @@
+form {
+  /* Form is in the middle */
+  margin: 0 auto;
+  width: 90%;
+  /* Определим контур формы */
+  padding: 1em;
+  border: 1px solid #CCC;
+  border-radius: 1em;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+form li + li {
+  margin-top: 1em;
+}
+
+label {
+  /* Each label alignment */
+  display: inline-block;
+  width: 40%;
+  text-align: right;
+}
+
+input,
+textarea,
+select {
+  font: 1em sans-serif;
+
+  /* Input field sizes */
+  width: 40%;
+  box-sizing: border-box;
+
+  border: 1px solid #999;
+}
+
+input[type="checkbox"] {
+  width: 15px;
+}
+
+input:focus,
+textarea:focus {
+  /* Extra-highlight on focus */
+  border-color: #000;
+}
+
+
+button {
+  margin-top: 1em;
+  width: 100%;
+  height: 30px;
+}
+
+.column {
+  float: left;
+  width: 60%;
+}
+
+.column + .column {
+  width: 40%;
+}
+
+form li + li.myli {
+  margin-top: 0em;
+}
+
+.myblock {
+  display: inline-block;
+  width: 15%;
+  text-align: center;
+}
+
+label.myblock + label.myblock {
+  text-align: center;
+}
+
+input.myblock {
+  display: inline-block;
+  width: 10%;
+  margin-left: 2.5%;
+  margin-right: 2.5%;
+  text-align: center;
+}
+
+.myblock.expanded {
+  width: 75%;
+}
+
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
