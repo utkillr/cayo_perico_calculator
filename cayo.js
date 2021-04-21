@@ -12,22 +12,22 @@ $(document).ready(function() {
     var safe_price = 75000;
     var safe_epsilon = 25000;
 
-    var money_in_lock_cnt  = parseInt($("#money_in_lock_cnt").val());
-    var money_in_cnt  = parseInt($("#money_in_cnt").val()) - money_in_lock_cnt;
-    var money_lock_cnt  = parseInt($("#money_lock_cnt").val());
-    var money_cnt = parseInt($("#money_cnt").val()) - money_in_cnt - money_lock_cnt;
+    var money_out_cnt = parseInt($("#money_out_cnt").val());
+    var money_out_lock_cnt = parseInt($("#money_out_lock_cnt").val());
+    var money_in_cnt = parseInt($("#money_in_cnt").val());
+    var money_in_lock_cnt = parseInt($("#money_in_lock_cnt").val());
 
-    var weed_lock_cnt = parseInt($("#weed_lock_cnt").val());
-    var weed_cnt = parseInt($("#weed_cnt").val()) - weed_lock_cnt;
+    var weed_out_cnt = parseInt($("#weed_out_cnt").val());
+    var weed_out_lock_cnt = parseInt($("#weed_out_lock_cnt").val());
 
-    var coke_lock_cnt = parseInt($("#coke_lock_cnt").val());
-    var coke_cnt = parseInt($("#coke_cnt").val()) - coke_lock_cnt;
+    var coke_out_cnt = parseInt($("#coke_out_cnt").val());
+    var coke_out_lock_cnt = parseInt($("#coke_out_lock_cnt").val());
 
-    var picture_lock_cnt = parseInt($("#picture_lock_cnt").val());
-    var picture_cnt = parseInt($("#picture_cnt").val()) - picture_lock_cnt;
+    var picture_in_cnt = parseInt($("#picture_in_cnt").val());
+    var picture_in_lock_cnt = parseInt($("#picture_in_lock_cnt").val());
 
-    var gold_lock_cnt = parseInt($("#gold_lock_cnt").val());
-    var gold_cnt = parseInt($("#gold_cnt").val()) - gold_lock_cnt;
+    var gold_in_cnt = parseInt($("#gold_in_cnt").val());
+    var gold_in_lock_cnt = parseInt($("#gold_in_lock_cnt").val());
 
     var slots = 24;
     var shares = []
@@ -48,21 +48,6 @@ $(document).ready(function() {
       "gold": (is_hard ? 328800 : 332592) * parseInt($("#gold_mult").val())
     };
 
-    var item_to_count = {
-      "money": money_cnt,
-      "money_in": money_in_cnt,
-      "money_lock": money_lock_cnt,
-      "money_in_lock": money_in_lock_cnt,
-      "weed": weed_cnt,
-      "weed_lock": weed_lock_cnt,
-      "coke": coke_cnt,
-      "coke_lock": coke_lock_cnt,
-      "picture": picture_cnt,
-      "picture_lock": picture_lock_cnt,
-      "gold": gold_cnt,
-      "gold_lock": gold_lock_cnt
-    };
-
     var item_to_slots = {
       "money": 6,
       "weed": 9,
@@ -79,36 +64,37 @@ $(document).ready(function() {
       "gold": 0
     };
 
-    var allowed_items;
+    // Will be available everywhere
+    var item_to_count = {
+      "money": money_in_cnt,
+      "picture": picture_in_cnt,
+      "gold": gold_in_cnt
+    }
 
-    if (is_elite) {
+    // If going alone, locked are inaccessible
+    if (players == 1) {
+      item_to_count["money"] -= money_in_lock_cnt;
+      item_to_count["picture"] -= picture_in_lock_cnt;
+      item_to_count["gold"] -= gold_in_lock_cnt;
+    }
+
+    // Consider going directly inside if elite
+    if (!is_elite) {
       if (players == 1) {
-        allowed_items = ["money", "picture", "gold"];
-        item_to_count["money"] = item_to_count["money_in"];
+        item_to_count["money"] += money_out_cnt - money_out_lock_cnt;
+        item_to_count["weed"] = weed_out_cnt - weed_out_lock_cnt;
+        item_to_count["coke"] = coke_out_cnt - coke_out_lock_cnt;
       } else {
-        allowed_items = ["money", "picture", "gold"];
-        item_to_count["money"] = item_to_count["money_in"] + item_to_count["money_in_lock"];
-        item_to_count["picture"] += item_to_count["picture_lock"];
-        item_to_count["gold"] += item_to_count["gold_lock"];
-      }
-    } else {
-      if (players == 1) {
-        allowed_items = ["money", "weed", "coke", "picture", "gold"];
-        item_to_count["money"] += item_to_count["money_in"];
-      } else {
-        allowed_items = ["money", "weed", "coke", "picture", "gold"];
-        item_to_count["money"] += item_to_count["money_lock"] + item_to_count["money_in"] + item_to_count["money_in_lock"];
-        item_to_count["weed"] += item_to_count["weed_lock"];
-        item_to_count["coke"] += item_to_count["coke_lock"];
-        item_to_count["picture"] += item_to_count["picture_lock"];
-        item_to_count["gold"] += item_to_count["gold_lock"];
+        item_to_count["money"] += money_out_cnt;
+        item_to_count["weed"] = weed_out_cnt;
+        item_to_count["coke"] = coke_out_cnt;
       }
     }
 
     var allowed_items_avg_price = {};
 
-    for (var i = 0; i < allowed_items.length; i++) {
-      allowed_items_avg_price[allowed_items[i]] = item_to_price[allowed_items[i]] / item_to_slots[allowed_items[i]];
+    for (var item in item_to_count) {
+      allowed_items_avg_price[item] = item_to_price[item] / item_to_slots[item];
     }
 
     var total = 0;
@@ -117,11 +103,11 @@ $(document).ready(function() {
       
       var expensive_item;
       var max_avg_price = 0;
-      
-      for (var i = 0; i < allowed_items.length; i++) {
-        if ((allowed_items_avg_price[allowed_items[i]] > max_avg_price) && (item_to_count[allowed_items[i]] > 0)) {
-          max_avg_price = allowed_items_avg_price[allowed_items[i]];
-          expensive_item = allowed_items[i];
+
+      for (var item in allowed_items_avg_price) {
+        if ((allowed_items_avg_price[item] > max_avg_price) && (item_to_count[item] > 0)) {
+          max_avg_price = allowed_items_avg_price[item];
+          expensive_item = item;
         }
       }
 
@@ -149,16 +135,16 @@ $(document).ready(function() {
         } else {
           var most_expensive_price_we_had = 1000000;
           var most_expensive_we_had;
-          var next_expensive_price_left = allowed_items.includes("money") ? allowed_items_avg_price["money"] : 0;
+          var next_expensive_price_left = "money" in allowed_items_avg_price ? allowed_items_avg_price["money"] : 0;
           var next_expensive_left = "money";
 
           // Let's find out how much we lose if we take whole picture instead of part of most expensive item we have
-          for (var i = 0; i < allowed_items.length; i++) {
-            if ((allowed_items_avg_price[allowed_items[i]] > allowed_items_avg_price[expensive_item]) &&
-                (allowed_items_avg_price[allowed_items[i]] < most_expensive_price_we_had) &&
-                (total_item_to_slots[allowed_items[i]] > 0)) {
-              most_expensive_price_we_had = allowed_items_avg_price[allowed_items[i]];
-              most_expensive_we_had = allowed_items[i];
+          for (var item in allowed_items_avg_price) {
+            if ((allowed_items_avg_price[item] > allowed_items_avg_price[expensive_item]) &&
+                (allowed_items_avg_price[item] < most_expensive_price_we_had) &&
+                (total_item_to_slots[item] > 0)) {
+              most_expensive_price_we_had = allowed_items_avg_price[item];
+              most_expensive_we_had = item;
             }
           }
 
