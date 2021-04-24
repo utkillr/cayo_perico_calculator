@@ -15,7 +15,7 @@ ul {
 }
 
 form li + li {
-  margin-top: 1em;
+  margin-top: 0.5em;
 }
 
 label {
@@ -73,11 +73,11 @@ form li + li.myli {
   text-align: center;
 }
 
-label.myblock + label.myblock {
-  text-align: center;
+label.myblock:first-child {
+  text-align: right;
 }
 
-input.myblock {
+input.myblock, select.myblock {
   display: inline-block;
   width: 10%;
   margin-left: 2.5%;
@@ -85,8 +85,26 @@ input.myblock {
   text-align: center;
 }
 
+.myblock.short {
+  width: 22.5%;
+}
+
+input.myblock.short, select.myblock {
+  width: 17.5%;
+  margin-left: 2.5%;
+  margin-right: 2.5%;
+}
+
 .myblock.expanded {
-  width: 75%;
+  width: 72.5%;
+}
+
+.myblock.short.expanded {
+  width: 64.5%;
+}
+
+.myblock:disabled {
+  text-align:left;
 }
 
 

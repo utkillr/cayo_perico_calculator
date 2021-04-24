@@ -121,15 +121,9 @@
             <input class="myblock" type="number" id="percent_4" name="percent_1" min="0" max="100" value="0">
           </li>
 
-          <li>
-            <label class="myblock">Settings</label>
-            <label class="myblock" for="hard">Hard mode:</label>
-            <label class="myblock" for="hard">Elite:</label>
-          </li>
           <li class="myli">
-            <label class="myblock"></label>
+            <label class="myblock" for="hard">Hard mode:</label>
             <input class="myblock" type="checkbox" name="hard" id="hard" value="1">
-            <input class="myblock" type="checkbox" name="elite" id="elite" value="1">
           </li>
         </ul>
         <button id="count" type="button">Count</button>
@@ -140,78 +134,111 @@
       <form>
         <ul>
           <li>
-            <label for="total">Total take:</label>
-            <input type="text" id="total" name="total" disabled>
+            <label class="myblock short" for="total">Total take:</label>
+            <input class="myblock short expanded" type="text" id="total" name="total" disabled>
+          </li>
+          <li>
+            <label class="myblock short" for="safe">Safe:</label>
+            <input class="myblock short expanded" type="text" id="safe" name="safe" disabled>
+          </li>
+          <li>
+            <label class="myblock short" for="main_price">Main:</label>
+            <input class="myblock short expanded" type="text" id="main_price" name="main_price" disabled>
           </li>
 
           <li>
-            <label for="money_take_cnt">Money count:</label>
-            <input type="text" id="money_take_cnt" name="money_take_cnt" disabled>
+            <label class="myblock short">Money</label>
+            <label class="myblock short" for="money_take_cnt">count:</label>
+            <label class="myblock short" for="money_take_slot">slots:</label>
+            <label class="myblock short" for="money_take_total">total:</label>
           </li>
-          <li>
-            <label for="money_take_total">Money total:</label>
-            <input type="text" id="money_take_total" name="money_take_total" disabled>
-          </li>
-
-          <li>
-            <label for="weed_take_cnt">Weed count:</label>
-            <input type="text" id="weed_take_cnt" name="weed_take_cnt" disabled>
-          </li>
-          <li>
-            <label for="weed_take_total">Weed total:</label>
-            <input type="text" id="weed_take_total" name="weed_take_total" disabled>
+          <li class="myli">
+            <label class="myblock short"></label>
+            <input class="myblock short" type="number" id="money_take_cnt" name="money_take_cnt" disabled>
+            <input class="myblock short" type="text" id="money_take_slot" name="money_take_slot" disabled>
+            <input class="myblock short" type="number" id="money_take_total" name="money_take_total" disabled>
           </li>
 
           <li>
-            <label for="coke_take_cnt">Coke count:</label>
-            <input type="text" id="coke_take_cnt" name="coke_take_cnt" disabled>
+            <label class="myblock short">Weed</label>
+            <label class="myblock short" for="weed_take_cnt">count:</label>
+            <label class="myblock short" for="weed_take_slot">slots:</label>
+            <label class="myblock short" for="weed_take_total">total:</label>
           </li>
-          <li>
-            <label for="coke_take_total">Coke total:</label>
-            <input type="text" id="coke_take_total" name="coke_take_total" disabled>
-          </li>
-
-          <li>
-            <label for="picture_take_cnt">Pictures count:</label>
-            <input type="text" id="picture_take_cnt" name="picture_take_cnt" disabled>
-          </li>
-          <li>
-            <label for="picture_take_total">Picture total:</label>
-            <input type="text" id="picture_take_total" name="picture_take_total" disabled>
+          <li class="myli">
+            <label class="myblock short"></label>
+            <input class="myblock short" type="number" id="weed_take_cnt" name="weed_take_cnt" disabled>
+            <input class="myblock short" type="text" id="weed_take_slot" name="weed_take_slot" disabled>
+            <input class="myblock short" type="number" id="weed_take_total" name="weed_take_total" disabled>
           </li>
 
           <li>
-            <label for="gold_take_cnt">Gold count:</label>
-            <input type="text" id="gold_take_cnt" name="gold_take_cnt" disabled>
+            <label class="myblock short">Coke</label>
+            <label class="myblock short" for="coke_take_cnt">count:</label>
+            <label class="myblock short" for="coke_take_slot">slots:</label>
+            <label class="myblock short" for="coke_take_total">total:</label>
           </li>
-          <li>
-            <label for="gold_take_total">Gold total:</label>
-            <input type="text" id="gold_take_total" name="gold_take_total" disabled>
+          <li class="myli">
+            <label class="myblock short"></label>
+            <input class="myblock short" type="number" id="coke_take_cnt" name="coke_take_cnt" disabled>
+            <input class="myblock short" type="text" id="coke_take_slot" name="coke_take_slot" disabled>
+            <input class="myblock short" type="number" id="coke_take_total" name="coke_take_total" disabled>
           </li>
 
           <li>
-            <label for="total_1">Total player 1:</label>
-            <input type="text" id="total_1" name="total_1" disabled>
+            <label class="myblock short">Pictures</label>
+            <label class="myblock short" for="picture_take_cnt">count:</label>
+            <label class="myblock short" for="picture_take_slot">slots:</label>
+            <label class="myblock short" for="picture_take_total">total:</label>
+          </li>
+          <li class="myli">
+            <label class="myblock short"></label>
+            <input class="myblock short" type="number" id="picture_take_cnt" name="picture_take_cnt" disabled>
+            <input class="myblock short" type="text" id="picture_take_slot" name="picture_take_slot" disabled>
+            <input class="myblock short" type="number" id="picture_take_total" name="picture_take_total" disabled>
+          </li>
+
+          <li>
+            <label class="myblock short">Gold</label>
+            <label class="myblock short" for="gold_take_cnt">count:</label>
+            <label class="myblock short" for="gold_take_slot">slots:</label>
+            <label class="myblock short" for="gold_take_total">total:</label>
+          </li>
+          <li class="myli">
+            <label class="myblock short"></label>
+            <input class="myblock short" type="number" id="gold_take_cnt" name="gold_take_cnt" disabled>
+            <input class="myblock short" type="text" id="gold_take_slot" name="gold_take_slot" disabled>
+            <input class="myblock short" type="number" id="gold_take_total" name="gold_take_total" disabled>
+          </li>
+
+          <li>
+            <label class="myblock short" for="elite">Elite:</label>
+            <input class="myblock short" type="checkbox" name="elite" id="elite" value="1" disabled>
+          </li>
+
+          <li>
+            <label class="myblock short" for="total_pavel">Total Pavel:</label>
+            <input class="myblock short expanded" type="text" id="total_pavel" name="total_pavel" disabled>
           </li>
           <li>
-            <label for="total_2">Total player 2:</label>
-            <input type="text" id="total_2" name="total_2" disabled>
+            <label class="myblock short" for="total_buyer">Total buyer:</label>
+            <input class="myblock short expanded" type="text" id="total_buyer" name="total_buyer" disabled>
           </li>
           <li>
-            <label for="total_3">Total player 3:</label>
-            <input type="text" id="total_3" name="total_3" disabled>
+            <label class="myblock short" for="total_1">Total player 1:</label>
+            <input class="myblock short expanded" type="text" id="total_1" name="total_1" disabled>
           </li>
           <li>
-            <label for="total_4">Total player 4:</label>
-            <input type="text" id="total_4" name="total_4" disabled>
+            <label class="myblock short" for="total_2">Total player 2:</label>
+            <input class="myblock short expanded" type="text" id="total_2" name="total_2" disabled>
           </li>
           <li>
-            <label for="total_buyer">Total buyer:</label>
-            <input type="text" id="total_buyer" name="total_buyer" disabled>
+            <label class="myblock short" for="total_3">Total player 3:</label>
+            <input class="myblock short expanded" type="text" id="total_3" name="total_3" disabled>
           </li>
           <li>
-            <label for="total_pavel">Total Pavel:</label>
-            <input type="text" id="total_pavel" name="total_pavel" disabled>
+            <label class="myblock short" for="total_4">Total player 4:</label>
+            <input class="myblock short expanded" type="text" id="total_4" name="total_4" disabled>
           </li>
         </ul>
       </form>
